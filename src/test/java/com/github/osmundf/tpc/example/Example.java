@@ -5,7 +5,7 @@ import com.intuit.karate.junit5.Karate;
 public class Example {
 
     @Karate.Test
-    Karate testAddEmployee() {
+    Karate testGreeting() {
         return Karate.run("hello-world").relativeTo(getClass());
     }
 }

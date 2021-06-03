@@ -3,7 +3,7 @@ Feature: Hello World Example
   Background:
     * url baseUrl
 
-  Scenario: Create a employee
+  Scenario: Create a Hello World Message
     Given path 'greeting'
     And header Content-Type = 'application/json'
     And request { name: "World" }
