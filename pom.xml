@@ -50,6 +50,8 @@
         <maven-war-plugin.version>3.3.1</maven-war-plugin.version>
         <!-- Settings: User defined plugin properties (Other) -->
         <moditect-maven-plugin.version>1.0.0.Beta2</moditect-maven-plugin.version>
+        <!-- Settings: User defined dependency properties (global) -->
+        <org.springframework.spring.boot.version>2.5.0</org.springframework.spring.boot.version>
         <!-- Settings: User defined dependency properties (main) -->
         <!-- Settings: User defined dependency properties (test) -->
         <org.junit.5.version>5.7.1</org.junit.5.version>
@@ -65,21 +67,28 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${org.springframework.spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
         <dependency>
-            <groupId>com.intuit.karate</groupId>
-            <artifactId>karate-apache</artifactId>
-            <version>0.9.5</version>
-            <scope>test</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${org.springframework.spring.boot.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.intuit.karate</groupId>
             <artifactId>karate-junit5</artifactId>
-            <version>0.9.5</version>
+            <version>1.0.1</version>
             <scope>test</scope>
         </dependency>
 
@@ -99,7 +108,7 @@
 
     <build>
         <finalName>${project.artifactId}-${project.version}</finalName>
-        <directory>_target</directory>
+        <directory>target</directory>
 
         <sourceDirectory>src/main/java</sourceDirectory>
         <resources>
@@ -107,7 +116,7 @@
                 <directory>src/main/resources</directory>
             </resource>
         </resources>
-        <!--<outputDirectory>_target/main-classes</outputDirectory>-->
+        <outputDirectory>target/main-classes</outputDirectory>
 
         <testSourceDirectory>src/test/java</testSourceDirectory>
         <testResources>
@@ -115,7 +124,7 @@
                 <directory>src/test/resources</directory>
             </testResource>
         </testResources>
-        <!--<testOutputDirectory>_target/test-classes</testOutputDirectory>-->
+        <testOutputDirectory>target/test-classes</testOutputDirectory>
 
         <plugins>
             <plugin>
